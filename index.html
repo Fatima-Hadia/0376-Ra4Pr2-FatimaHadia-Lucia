@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <title>Mastermind: Code Breaker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>MASTERMIND: SYSTEM OVERRIDE</h1>
+        
+        <div class="instructions">
+            <p>Endevina el codi secret de 4 números. Tens <strong>5 intents</strong>.</p>
+            <p>Llegenda: 1 (Correcte), Ø (Mal col·locat), × (No hi és).</p>
+        </div>
+
+        <div class="stats">
+            Rondes: <span id="rondes-restants">5</span> / 5
+        </div>
+
+        <div class="game-controls">
+            <div class="inputs">
+                <select class="code-input"></select>
+                <select class="code-input"></select>
+                <select class="code-input"></select>
+                <select class="code-input"></select>
+            </div>
+            <button id="btn-enviar">EXECUTAR CODI</button>
+        </div>
+
+        <div id="terminal" class="terminal">
+            <p class="line">-- SYSTEM READY. WAITING FOR INPUT... --</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
