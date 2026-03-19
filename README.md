@@ -1,7 +1,4 @@
 0376-Ra4Pr2-FatimaHadia-Lucia
-<<<<<<< HEADgit merge feature-ui-logic
-   Projecte Col·laboratiu
-=======
 
 Joc de Mastermind numèric amb estètica de terminal.
 Curs 2025/2026 — Institut de Logística de Barcelona
@@ -169,4 +166,3 @@ P25 — Com ajuda la documentació a altres desenvolupadors?
 Permet entendre el projecte ràpidament, configurar l'entorn, contribuir seguint les normes i solucionar problemes sense haver de llegir tot el codi.
 
 Projecte realitzat per FatimaHadia i Lucia — Curs 2025/2026
->>>>>>> feature-ui-logic
