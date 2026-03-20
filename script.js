@@ -1,3 +1,14 @@
+let codiSecret = generarCodiSecret();
+let rondesRestants = 5;
+let jocAcabat = false;
+
+function generarCodiSecret() {
+    const codi = [];
+    for (let i = 0; i < 4; i++) {
+        codi.push(Math.floor(Math.random() * 10));
+    }
+    return codi;
+}
 
 function omplirSelects() {
     const selects = document.querySelectorAll('.code-input');
@@ -32,6 +43,40 @@ function logTerminal(missatge, tipus) {
 
 function actualitzarRondes() {
     document.getElementById('rondes-restants').textContent = rondesRestants;
+}
+
+function validarIntent(intent, codiSecret) {
+    const pistes = [];
+    const codiTemp = [...codiSecret];
+    const intentTemp = [...intent];
+
+    // Primero: números correctos en posición correcta
+    for (let i = 0; i < 4; i++) {
+        if (intentTemp[i] === codiTemp[i]) {
+            pistes.push('1');
+            codiTemp[i] = null;
+            intentTemp[i] = null;
+        }
+    }
+
+    // Después: números correctos en posición incorrecta
+    for (let i = 0; i < 4; i++) {
+        if (intentTemp[i] !== null) {
+            const posicio = codiTemp.indexOf(intentTemp[i]);
+            if (posicio !== -1) {
+                pistes.push('Ø');
+                codiTemp[posicio] = null;
+            } else {
+                pistes.push('×');
+            }
+        }
+    }
+
+    return pistes;
+}
+
+function comprovarFinalJoc(pistes) {
+    return pistes.length === 4 && pistes.every(pista => pista === '1');
 }
 
 document.getElementById('btn-enviar').addEventListener('click', function () {
