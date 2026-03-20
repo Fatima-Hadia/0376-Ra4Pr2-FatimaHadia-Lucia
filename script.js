@@ -1,4 +1,3 @@
-
 // Lucia Cayuela
 
 const MAX_RONDES = 5;
@@ -48,18 +47,15 @@ function validarIntent(intent, secret) {
     return pistes;
 }
 
-// Comprovació de Final de Joc: Determinar si l'intent és guanyador (quatre "1") o si s'han esgotat les 5 rondes.
+// Comprovació de Final de Joc
 function comprovarFinalJoc(pistes) {
     return pistes.filter(p => p === '1').length === 4;
 }
 
 
+// Hadia Fatima
 
-
-//Hadia Fatima
-
-//Generació de Selects: Crear un bucle que ompli els 4 desplegables amb números del 0 al 9.
-
+// Generació de Selects: Crear un bucle que ompli els 4 desplegables amb números del 0 al 9.
 function omplirSelects() {
     const selects = document.querySelectorAll('.code-input');
     selects.forEach(select => {
@@ -72,8 +68,7 @@ function omplirSelects() {
     });
 }
 
-//Funció logTerminal(missatge, tipus): Crear una funció que rebi un text i el tipus (èxit, error o normal) i l'imprimeixi a la zona de terminal del HTML amb un efecte de "línia de comanda".
-
+// Funció logTerminal(missatge, tipus): Crear una funció que rebi un text i el tipus (èxit, error o normal) i l'imprimeixi a la zona de terminal del HTML amb un efecte de "línia de comanda".
 function logTerminal(missatge, tipus) {
     const terminal = document.getElementById('terminal');
     const linia = document.createElement('p');
@@ -93,9 +88,12 @@ function logTerminal(missatge, tipus) {
     terminal.scrollTop = terminal.scrollHeight;
 }
 
+// Control de Rondes: Actualitzar el comptador visual de rondes restants a cada intent.
+function actualitzarRondes() {
+    document.getElementById('rondes-restants').textContent = rondesRestants;
+}
 
-//Gestor d'Esdeveniments: Escoltar el clic del botó "Executar Codi", recollir els valors dels 4 selects i cridar a la lògica de comparació.
-
+// Gestor d'Esdeveniments: Escoltar el clic del botó "Executar Codi", recollir els valors dels 4 selects i cridar a la lògica de comparació.
 document.getElementById('btn-enviar').addEventListener('click', function () {
     if (jocAcabat) {
         logTerminal('El joc ha acabat. Recarrega la pàgina per jugar de nou.', 'error');
@@ -123,12 +121,6 @@ document.getElementById('btn-enviar').addEventListener('click', function () {
         document.getElementById('btn-enviar').disabled = true;
     }
 });
-
-//Control de Rondes: Actualitzar el comptador visual de rondes restants a cada intent.
-
-function actualitzarRondes() {
-    document.getElementById('rondes-restants').textContent = rondesRestants;
-}
 
 // Inicialització en carregar la pàgina
 omplirSelects();
