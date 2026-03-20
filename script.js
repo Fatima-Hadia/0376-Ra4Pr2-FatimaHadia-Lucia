@@ -51,11 +51,6 @@ document.getElementById('btn-enviar').addEventListener('click', function () {
     actualitzarRondes();
 
     if (comprovarFinalJoc(pistes)) {
-        logTerminal('CODI CORRECTE! Has trencat el sistema en ' + (MAX_RONDES - rondesRestants) + ' intents.', 'exit');
-        jocAcabat = true;
-        document.getElementById('btn-enviar').disabled = true;
-    } else if (rondesRestants === 0) {
-        logTerminal('SISTEMA BLOQUEJAT. El codi secret era: [ ' + codiSecret.join(' | ') + ' ]', 'error');
         jocAcabat = true;
         document.getElementById('btn-enviar').disabled = true;
     }
