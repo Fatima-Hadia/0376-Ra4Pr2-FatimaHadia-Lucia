@@ -1,3 +1,4 @@
+
 const MAX_RONDES = 5;
 let rondesRestants = MAX_RONDES;
 let jocAcabat = false;
@@ -12,10 +13,12 @@ function generarCodiSecret() {
 
 const codiSecret = generarCodiSecret();
 
+
 function validarIntent(intent, secret) {
     const pistes = [];
     const secretCopia = [...secret];
     const intentCopia = [...intent];
+
 
     for (let i = 0; i < 4; i++) {
         if (intentCopia[i] === secretCopia[i]) {
@@ -41,9 +44,11 @@ function validarIntent(intent, secret) {
     return pistes;
 }
 
+
 function comprovarFinalJoc(pistes) {
     return pistes.filter(p => p === '1').length === 4;
 }
+
 
 function omplirSelects() {
     const selects = document.querySelectorAll('.code-input');
@@ -56,6 +61,7 @@ function omplirSelects() {
         }
     });
 }
+
 
 function logTerminal(missatge, tipus) {
     const terminal = document.getElementById('terminal');
@@ -76,9 +82,11 @@ function logTerminal(missatge, tipus) {
     terminal.scrollTop = terminal.scrollHeight;
 }
 
+
 function actualitzarRondes() {
     document.getElementById('rondes-restants').textContent = rondesRestants;
 }
+
 
 document.getElementById('btn-enviar').addEventListener('click', function () {
     if (jocAcabat) {
@@ -98,16 +106,7 @@ document.getElementById('btn-enviar').addEventListener('click', function () {
     actualitzarRondes();
 
     if (comprovarFinalJoc(pistes)) {
-        logTerminal('CODI CORRECTE!', 'exit');
-        jocAcabat = true;
-        document.getElementById('btn-enviar').disabled = true;
-    } else if (rondesRestants === 0) {
-        logTerminal('SISTEMA BLOQUEJAT. El codi era: ' + codiSecret.join(''), 'error');
         jocAcabat = true;
         document.getElementById('btn-enviar').disabled = true;
     }
 });
-
-omplirSelects();
-actualitzarRondes();
-logTerminal('SYSTEM READY. WAITING FOR INPUT...', 'normal');
