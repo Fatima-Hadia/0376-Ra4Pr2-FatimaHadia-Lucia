@@ -1,55 +1,3 @@
-
-const MAX_RONDES = 5;
-let rondesRestants = MAX_RONDES;
-let jocAcabat = false;
-
-function generarCodiSecret() {
-    const codi = [];
-    for (let i = 0; i < 4; i++) {
-        codi.push(Math.floor(Math.random() * 10));
-    }
-    return codi;
-}
-
-const codiSecret = generarCodiSecret();
-
-
-function validarIntent(intent, secret) {
-    const pistes = [];
-    const secretCopia = [...secret];
-    const intentCopia = [...intent];
-
-
-    for (let i = 0; i < 4; i++) {
-        if (intentCopia[i] === secretCopia[i]) {
-            pistes.push('1');
-            secretCopia[i] = null;
-            intentCopia[i] = null;
-        }
-    }
-
-    for (let i = 0; i < 4; i++) {
-        if (intentCopia[i] === null) continue;
-
-        const index = secretCopia.indexOf(intentCopia[i]);
-
-        if (index !== -1) {
-            pistes.push('Ø');
-            secretCopia[index] = null;
-        } else {
-            pistes.push('×');
-        }
-    }
-
-    return pistes;
-}
-
-
-function comprovarFinalJoc(pistes) {
-    return pistes.filter(p => p === '1').length === 4;
-}
-
-
 function omplirSelects() {
     const selects = document.querySelectorAll('.code-input');
     selects.forEach(select => {
@@ -61,7 +9,6 @@ function omplirSelects() {
         }
     });
 }
-
 
 function logTerminal(missatge, tipus) {
     const terminal = document.getElementById('terminal');
@@ -82,11 +29,9 @@ function logTerminal(missatge, tipus) {
     terminal.scrollTop = terminal.scrollHeight;
 }
 
-
 function actualitzarRondes() {
     document.getElementById('rondes-restants').textContent = rondesRestants;
 }
-
 
 document.getElementById('btn-enviar').addEventListener('click', function () {
     if (jocAcabat) {
@@ -110,3 +55,7 @@ document.getElementById('btn-enviar').addEventListener('click', function () {
         document.getElementById('btn-enviar').disabled = true;
     }
 });
+
+omplirSelects();
+actualitzarRondes();
+logTerminal('SYSTEM READY. WAITING FOR INPUT...', 'normal');
