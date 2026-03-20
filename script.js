@@ -1,3 +1,4 @@
+
 function omplirSelects() {
     const selects = document.querySelectorAll('.code-input');
     selects.forEach(select => {
@@ -51,6 +52,11 @@ document.getElementById('btn-enviar').addEventListener('click', function () {
     actualitzarRondes();
 
     if (comprovarFinalJoc(pistes)) {
+        logTerminal('CODI CORRECTE!', 'exit');
+        jocAcabat = true;
+        document.getElementById('btn-enviar').disabled = true;
+    } else if (rondesRestants === 0) {
+        logTerminal('SISTEMA BLOQUEJAT. Codi: [ ' + codiSecret.join(' | ') + ' ]', 'error');
         jocAcabat = true;
         document.getElementById('btn-enviar').disabled = true;
     }
